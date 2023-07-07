@@ -1,41 +1,77 @@
+import React, { useContext, useReducer } from "react";
 
-import React, {useContext, useReducer} from "react"
+//////////////////////
+// INITIAL STATE
+//////////////////////
 
-
-//INITIAL STATE
 const initialState = {
-  url: "http://diary-up7p.onrender.com"
-}
+  url: "http://localhost:4000/",
+  token: null,
+  username: null,
+  notes: null,
+  new: {
+    title: "",
+    body: "",
+  },
+  edit: {
+    id: 0,
+    title: "",
+    body: "",
+  },
+};
 
+///////////////////////
 // REDUCER
+///////////////////////
+// action = {type: "", payload: ---}
 const reducer = (state, action) => {
-  
-  switch(action.type){
+  let newState;
+  switch (action.type) {
+    case "auth":
+      newState = { ...state, ...action.payload };
+      return newState;
+      break;
+    case "logout":
+      newState = { ...state, token: null, username: null };
+      window.localStorage.removeItem("auth");
+      return newState;
+      break;
+    case "getNotes":
+      newState = { ...state, notes: action.payload };
+      return newState;
+      break;
+    case "select":
+      newState = { ...state, edit: action.payload };
+      return newState;
+      break;
     default:
-      return state
+      return state;
+      break;
   }
-}
+};
 
+////////////////////
+// AppContext
+////////////////////
+const AppContext = React.createContext(null);
 
-// APPCONTEXT
-
-const AppContext = React.createContext(null)
-
-
-
-//AppState component
+////////////////////
+// AppState Component
+////////////////////
 export const AppState = (props) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const [state, dispatch] = useReducer(reducer, initialState)
+  return (
+    <AppContext.Provider value={{ state, dispatch }}>
+      {props.children}
+    </AppContext.Provider>
+  );
+};
 
-  return <AppContext.Provider value={{state, dispatch}}>
-    {props.children}
-  </AppContext.Provider>
-
-}
-
-
+////////////////////
 //useAppState hook
+////////////////////
+
 export const useAppState = () => {
-  return React.useContext(AppContext)
-}
+  return React.useContext(AppContext);
+};
