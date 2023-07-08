@@ -1,5 +1,5 @@
 //App.js
-import React, { useState } from "react"
+import React, { useEffect } from "react"
 import {Switch, Route } from "react-router-dom"
 import Nav from "./components/Nav"
 import Home from "./pages/Home"
@@ -9,13 +9,10 @@ import { useAppState } from "./AppState"
 
 export const App = (props) => {
     const { state, dispatch } = useAppState();
-    React.useState(() => {
+    useEffect(() => {
       const auth = JSON.parse(window.localStorage.getItem("auth"));
-      if (auth) {
+      if (auth && auth.token) {
         dispatch({ type: "auth", payload: auth });
-        props.history.push("/dashboard");
-      } else {
-        props.history.push("/");
       }
     }, []);
   
