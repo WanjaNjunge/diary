@@ -1,3 +1,4 @@
+//dashboard.js
 import React from "react"
 import { useAppState } from "../AppState"
 import { Route, Link } from "react-router-dom"
@@ -64,8 +65,10 @@ const Dashboard = (props) => {
         </div>
       );
     };
-    console.log()
+    
     return notes ? loaded() : <h1>Loading...</h1>;
   };
   
   export default Dashboard;
+
+  

@@ -1,3 +1,4 @@
+//AppState.js
 import React, { useContext, useReducer } from "react";
 
 //////////////////////
@@ -5,7 +6,7 @@ import React, { useContext, useReducer } from "react";
 //////////////////////
 
 const initialState = {
-  url: "http://localhost:4000/",
+  url: "https://diary-up7p.onrender.com",
   token: null,
   username: null,
   notes: null,
@@ -75,3 +76,4 @@ export const AppState = (props) => {
 export const useAppState = () => {
   return React.useContext(AppContext);
 };
+
