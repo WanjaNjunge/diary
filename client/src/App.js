@@ -22,7 +22,7 @@ export const App = (props) => {
 
 
     return <>
-    <Route path="/" component={Nav}/>
+    <Nav />
     <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/auth/:form" component={Auth} />
