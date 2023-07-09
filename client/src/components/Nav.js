@@ -1,42 +1,47 @@
-//nav.js
-import React from "react"
-import { Link } from "react-router-dom"
-import { useAppState } from "../AppState"
+import React from "react";
+import { Link } from "react-router-dom";
+import { useAppState } from "../AppState";
 
 const Nav = (props) => {
-    const { state, dispatch } = useAppState();
-  
-    return (
-      <header>
-        <h1>Alex Merced Note Taking App</h1>
-        <nav>
-          {!state.token ? (
-            <>
-              <Link to="/">
-                <div>Home</div>
+  const { state, dispatch } = useAppState();
+
+  return (
+    <header className="navbar navbar-expand-lg navbar-light bg-light">
+      <h1 className="navbar-brand">Alex Merced Note Taking App</h1>
+      <nav>
+        {!state.token ? (
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <Link to="/" className="nav-link">
+                Home
               </Link>
-              <Link to="/auth/signup">
-                <div>Signup</div>
+            </li>
+            <li className="nav-item">
+              <Link to="/auth/signup" className="nav-link">
+                Signup
               </Link>
-              <Link to="/auth/login">
-                <div>Login</div>
+            </li>
+            <li className="nav-item">
+              <Link to="/auth/login" className="nav-link">
+                Login
               </Link>
-            </>
-          ) : null}
-          {state.token ? (
-            <div
-              onClick={() => {
-                dispatch({ type: "logout" });
-                props.history.push("/");
-              }}
-            >
-              Logout
-            </div>
-          ) : null}
-        </nav>
-      </header>
-    );
-  };
-  
-  export default Nav;
-  
+            </li>
+          </ul>
+        ) : null}
+        {state.token ? (
+          <button
+            className="btn btn-link"
+            onClick={() => {
+              dispatch({ type: "logout" });
+              props.history.push("/");
+            }}
+          >
+            Logout
+          </button>
+        ) : null}
+      </nav>
+    </header>
+  );
+};
+
+export default Nav;
