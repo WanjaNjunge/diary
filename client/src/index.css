@@ -12,6 +12,15 @@ code {
     monospace;
 }
 
+select.form-control,
+textarea.form-control,
+input.form-control {
+  font-size: 1rem;
+}
+input[type="file"] {
+  width: 100%;
+}
+
 
 /* NAV COMPONENT*/
 header {
@@ -46,6 +55,22 @@ header nav div:hover {
   background-color: burlywood;
   color: crimson;
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-left {
+  flex: 1;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
 
 /* /////////////////////////
 Auth Component

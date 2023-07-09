@@ -7,10 +7,12 @@ const Nav = (props) => {
 
   return (
     <header className="navbar navbar-expand-lg navbar-light bg-light">
-      <h1 className="navbar-brand">Alex Merced Note Taking App</h1>
-      <nav>
+      <div className="navbar-left">
+        <h1 className="navbar-brand">MY NOTES</h1>
+      </div>
+      <nav className="navbar-right">
         {!state.token ? (
-          <ul className="navbar-nav mr-auto">
+          <ul className="navbar-nav">
             <li className="nav-item">
               <Link to="/" className="nav-link">
                 Home
