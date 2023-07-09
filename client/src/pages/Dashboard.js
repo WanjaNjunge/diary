@@ -2,6 +2,7 @@ import React from "react";
 import { useAppState } from "../AppState";
 import { Redirect, Route, Link } from "react-router-dom";
 import Form from "../components/Form"
+import Search from "../components/Search";
 
 const Dashboard = (props) => {
   const { state, dispatch } = useAppState();
@@ -37,7 +38,13 @@ const Dashboard = (props) => {
     getNotes();
   }, []);
 
+  const [searchQuery, setSearchQuery] = React.useState("");
+
   const loaded = () => {
+    const filteredNotes = state.notes.filter((note) =>
+      note.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
       <div className="dashboard">
         <h1>{username}'s Notes</h1>
@@ -48,8 +55,12 @@ const Dashboard = (props) => {
           path="/dashboard/:action"
           render={(rp) => <Form {...rp} getNotes={getNotes} />}
         />
+        <Search // Render the Search component
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
         <ul>
-          {state.notes.map((note) => (
+        {filteredNotes.map((note) => (
             <div className="note" key={note.id}>
               <h2>{note.title}</h2>
               <h4>{note.body}</h4>
