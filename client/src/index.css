@@ -97,10 +97,7 @@ header nav div {
   padding: 10px;
 }
 
-header nav div:hover {
-  background-color: burlywood;
-  color: crimson;
-}
+
 
 .navbar {
   display: flex;
