@@ -55,6 +55,8 @@ const Auth = (props) => {
     });
   };
 
+  const capitalizedType = type.charAt(0).toUpperCase() + type.slice(1);
+
   return (
     <div className="auth">
       <form onSubmit={handleSubmit}>
@@ -63,14 +65,17 @@ const Auth = (props) => {
           name="username"
           value={formData.username}
           onChange={handleChange}
+          required
         />
         <input
           type="password"
           name="password"
           value={formData.password}
           onChange={handleChange}
+          required
         />
-        <input type="submit" value={type} />
+        <input type="submit" value={capitalizedType} className="btn btn-primary"
+          style={{ marginTop: "10px" }} />
       </form>
     </div>
   );

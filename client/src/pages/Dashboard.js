@@ -48,14 +48,14 @@ const Dashboard = (props) => {
     return (
       <div className="dashboard">
         <h1>{username}'s Notes</h1>
-        <Link to="/dashboard/new">
-          <button>New Note</button>
+        <Link to="/dashboard/new" className="new-note-link">
+          <button className="btn btn-secondary">New Note</button>
         </Link>
         <Route
           path="/dashboard/:action"
           render={(rp) => <Form {...rp} getNotes={getNotes} />}
         />
-        <Search // Render the Search component
+        <Search className="search-bar" // Render the Search component
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
         />
@@ -64,15 +64,15 @@ const Dashboard = (props) => {
             <div className="note" key={note.id}>
               <h2>{note.title}</h2>
               <h4>{note.body}</h4>
-              <button
+              <button className="btn btn-secondary edit-button"
                 onClick={() => {
                   dispatch({ type: "select", payload: note });
                   props.history.push("/dashboard/edit");
                 }}
               >
-                Edit Note
+                Edit
               </button>
-              <button
+              <button className="btn btn-secondary delete-button"
                 onClick={() => {
                   fetch(url + "/notes/" + note.id, {
                     method: "delete",
@@ -82,7 +82,7 @@ const Dashboard = (props) => {
                   }).then(() => getNotes());
                 }}
               >
-                Delete Note
+                Delete
               </button>
             </div>
           ))}

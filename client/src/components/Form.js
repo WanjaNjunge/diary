@@ -51,12 +51,14 @@ const Form = (props) => {
             name="title"
             value={formData.title}
             onChange={handleChange}
+            required
           />
           <input
             type="text"
             name="body"
             value={formData.body}
             onChange={handleChange}
+            required
           />
           <input type="submit" value={action} />
         </form>

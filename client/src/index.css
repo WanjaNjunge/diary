@@ -22,6 +22,16 @@ input[type="file"] {
 }
 
 /*Button*/
+
+.edit-button {
+  margin-right: 10px;
+}
+
+.delete-button {
+  margin-left: 10px;
+}
+
+
 .bn53 {
   background-color: #b81515;
   color: white;
@@ -123,8 +133,8 @@ Auth Component
   padding: 50px;
 }
 
-.auth form input, .form form input, button {
-  background-color: white;
+.auth form input, .form form input {
+  
   color: black;
   padding: 8px;
   border-radius: 5px;
@@ -133,6 +143,7 @@ Auth Component
   text-align: center;
   font-size: 1.2em;
 }
+
 
 
 /* /////////////////////////
@@ -145,10 +156,22 @@ DASHBOARD
 
 .dashboard .note {
   text-align: center;
-  width: 90%;
+  width: 40%;
   margin: 10px auto;
-  border: 3px solid crimson;
+  border: 3px solid grey;
 }
+
+.new-note-link {
+  margin-right: 10px;
+}
+
+.search-bar {
+  margin-left: 10px;
+}
+
+
+/*Form*/
+
 
 
 

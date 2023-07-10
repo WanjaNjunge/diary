@@ -32,7 +32,7 @@ const Nav = (props) => {
         ) : null}
         {state.token ? (
           <button
-            className="btn btn-link"
+          className="btn btn-primary"
             onClick={() => {
               dispatch({ type: "logout" });
               props.history.push("/");
